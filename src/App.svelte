@@ -1,7 +1,6 @@
 <script lang="ts">
   import { onDestroy, onMount } from 'svelte';
   import GameController from './GameController';
-  import GameOver from 'components/GameOver.svelte';
 
   let lastTimestamp: number;
   let canvas: HTMLCanvasElement;

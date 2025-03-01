@@ -1,30 +1,26 @@
 export default class PerfMon {
-  private static readonly MAX_SAMPLE: number = 100;
-
-  private readonly frameTimes: number[] = [];
-  private lastTime: number = performance.now();
+  private static readonly maxSample = 100;
   private fps: number = 0;
+  private readonly frametimes: number[] = new Array(PerfMon.maxSample);
 
   public update(deltaTime: number) {
-    const now = performance.now();
-    const frameTime = now - this.lastTime;
-    this.lastTime = now;
-
-    this.frameTimes.push(frameTime);
-    if (this.frameTimes.length > PerfMon.MAX_SAMPLE) {
-      this.frameTimes.shift();
+    this.frametimes.push(deltaTime);
+    if (this.frametimes.length > PerfMon.maxSample) {
+      this.frametimes.shift();
     }
 
-    const avgFrameTime = this.frameTimes.reduce((a, b) => a + b, 0) / this.frameTimes.length;
-    this.fps = 1000 / avgFrameTime;
+    this.fps = 1000 / this.avgFrametime;
+  }
+
+  private get avgFrametime(): number {
+    return this.frametimes.reduce((a, b) => a + b, 0) / this.frametimes.length;
   }
 
   public draw(ctx: CanvasRenderingContext2D) {
     ctx.fillStyle = 'black';
-    ctx.fillRect(0, 0, 150, 50);
-
+    ctx.fillRect(0, 0, 40, 20);
     ctx.fillStyle = 'white';
-    ctx.font = '14px Arial';
-    ctx.fillText(`FPS: ${this.fps.toFixed(1)}`, 10, 20);
+    ctx.font = 'bold 15px Roboto';
+    ctx.fillText(this.fps.toFixed(0), 5, 15);
   }
 }

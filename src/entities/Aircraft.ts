@@ -48,9 +48,15 @@ export default class Aircraft {
     ctx.drawImage(this.sprite.handle, -playerWidth, -playerHeight, playerWidth, playerHeight);
 
     if (this.debug) {
+      // Hitbox
       ctx.strokeStyle = 'green';
       ctx.rect(-playerWidth, -playerHeight, playerWidth, playerHeight);
       ctx.stroke();
+
+      // Player origin point
+      // ctx.fillStyle = 'red';
+      // ctx.rect(-playerWidth, -playerHeight, 5, 5);
+      // ctx.fill();
     }
 
     ctx.restore();

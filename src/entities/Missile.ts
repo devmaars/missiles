@@ -4,7 +4,8 @@ import { RAD_2_DEG } from 'utils/util';
 export default class Missile {
   private static readonly collisionThreshold = 20;
   private angle: number = 0;
-  private turnRate: number = 0.002;
+  // private turnRate: number = 0.002;
+  private turnRate: number = 0.003;
   private readonly speed: number = 0.6;
 
   constructor(public position: Vector2, private readonly target: Vector2) {}
