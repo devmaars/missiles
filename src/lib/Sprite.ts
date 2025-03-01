@@ -5,7 +5,7 @@ export default class Sprite {
 
   constructor(path: string) {
     const img = new Image();
-    img.src = `${ASSETS_SRC}${path}`;
+    img.src = `${path}`;
     this.img = img;
   }
 

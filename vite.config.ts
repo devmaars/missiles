@@ -5,7 +5,7 @@ import path from 'path';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [svelte()],
-  // base: '/missiles',
+  base: '/',
   resolve: {
     alias: {
       lib: path.resolve(__dirname, 'src/lib'),
